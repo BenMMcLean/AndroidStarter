@@ -11,7 +11,7 @@ android {
         applicationId "cl.benm.application"
         minSdk 21
         targetSdk 34
-        versionCode appVersionCode.toInteger()+5000
+        versionCode appVersionCode.toInteger()+0 // Change +0 to a larger number if there is an instant app module
         versionName "${appVersionName.toString()}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
