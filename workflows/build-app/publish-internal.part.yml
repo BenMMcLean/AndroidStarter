@@ -1,0 +1,16 @@
+  publish-internal:
+    needs:
+      - build-ab
+      - version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: ${{github.run_number}}-release-appbundle
+          path: ./app/build/outputs/apk/debug/
+      - uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          packageName: au.com.stripysock.christmas.trees
+          releaseFile: ./app/build/outputs/apk/debug/app-release.aab
+          track: internal
